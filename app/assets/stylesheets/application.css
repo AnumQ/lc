@@ -82,7 +82,6 @@ border-radius: 15px;
 
 #mast-right
 {	
-	background-color: ;
 	margin-top: -50px;
 	margin-right: 0px;
 	margin-left: auto;
@@ -129,8 +128,6 @@ border-radius: 15px;
 	padding-top: 5px;
 	padding-bottom: 5px;
 	border-top: 2px solid LightGrey;
-	background-color: ;
-
 }
 
 
@@ -232,11 +229,10 @@ border-radius: 15px;
 
 #logtitle { font-weight: bold;  padding: 10px 10px 10px 10px; 
 	margin-top: 10px;
-	background-color: ;
 	border-bottom: 1px solid black;
 }
 .title { font-size: 24px;}
-.date { background-color: ; float: right; margin-top: -30px; font-size: 22px;}
+.date { float: right; margin-top: -30px; font-size: 22px;}
 
 #border { border-bottom: 1px solid LightGrey; }
 #log { margin-left: 10px; margin-right: 10px; padding-right: 10px; padding-left: 10px;
