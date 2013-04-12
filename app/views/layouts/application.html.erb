@@ -1,35 +1,39 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
 <head>
-<title>e-shop</title>
+<title>Logbook - Anum Qudsia</title>
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 <body>
 <div id="container">
+
 	<div id="masthead">
-		<%= link_to 'Home', '/home' %>
-		<%= link_to 'Products', '/products' %>
-		<%= link_to 'Contact', '/contact' %>
-		<%= link_to 'About', '/about' %>
-		<%= link_to 'Help', '/help' %>
-		<div id="mast-right">
-				<% if user_signed_in? %> 
-				<div class="button">
-				<%= button_to "Sign Out", sign_out_path, :class => "button", :method => :get %> 
-				
-				<%= link_to "My Account", edit_user_registration_path %>
-				</div>
-				<% else %>
-				<div class="button">
-				<%= button_to "Sign In", sign_in_path, :class => "button", :method => :get %>
-				<br/>
-				<%= link_to "Sign Up", sign_up_path, :class => "button" %>
-				</div>
-				<% end %>
+		<div id="pic">
+		<a href="/home"><img src="/assets/home.png" alt="" height="50" width="50"></a>
 		</div>
+		<h1>Logbook by Anum Qudsia - K0913234</h1>	
+		<div id="mast-right">
+			<% if user_signed_in? %> 
+			<div class="button">
+			
+			<%= link_to "My Account", edit_user_registration_path %>
+			<br />
+			<%= link_to "Sign Out", logout_path, :class => "button", :method => :get %> 
+			<p> Welcome, <%= current_user.name %> </p>
+			</div>
+			<% else %>
+			<div class="button">
+			<%= link_to "Sign In", login_path, :class => "button", :method => :get %>
+			<br/>
+			<%= link_to "Sign Up", signup_path, :class => "button" %>
+			</div>
+			<% end %>		
+		</div>
+		
 	</div>
-	<% if notice != nil %> 
+	<% if (notice || alert) != nil %> 
 	<div id="flash">
 	<p class="notice"><%= notice %></p>
 	<p class="alert"><%= alert %></p> 
@@ -37,27 +41,29 @@
 	<% else %>
 	<% end %>
 	
-   <div id="navigation">
-      <p><a href="index.htm">Home</a></p>
-      <p><a href="clothes.htm">Clothes</a></p>
-      <p><a href="electronics.htm">Electrical</a></p>
-      <p><a href="books.htm">DVD and Blu-Ray</a></p>
-      <p><a href="music.htm">Music</a></li>
-      <p><a href="video.htm">Shopping Cart</a></p>
-      <p><a href="account.htm">Manage Account</a></p>
-   </div>	
+	<div id="navigation">
+	<% if user_signed_in? %>
+		  <% if current_user.admin? %>
+			<p> <%= link_to 'Create new log',  new_log_path , :class => 'button' %> </p>
+			<p> <%= link_to 'Users', users_path, :class => 'button' %></p>
+			<p> <%= link_to 'All Logs', logs_path, :class => 'button' %></p>
+			<p> <%= link_to 'All Comments', comments_path, :class => 'button' %></p>
+		 <%end %>
+	<%end %>
+		
+	 <h3>Listing logs</h3>
+	 <% @logs = Log.all %>
+	 <% @logs.each do |log| %>
+			<p><%= link_to log.title, log %></p>	
+	<% end %>	
+	</div>
+
    <div id="content">
 		<%= yield %>
    </div>
    
    <div id="footer">
-      <p><a href="index.htm">Home</a> | 
-      <a href="clothes.htm">Clothes</a> |
-      <a href="electronics.htm">Electrical</a> |
-      <a href="books.htm">DVD/Blu-Ray</a> |
-      <a href="music.htm">Music</a> |
-      <a href="video.htm">Shopping Cart</a> |
-      <a href="account.htm">Manage Account</a></p>
+		© 2013 by Anum Qudsia. All rights reserved
    </div>
 
 </div>

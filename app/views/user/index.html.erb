@@ -1,0 +1,35 @@
+	<div class="CSSTableGenerator">
+	<table>
+	  <tr>
+		<td>ID </td>
+		<td>Name</td>
+		<td>Email</td>
+		<td>Admin</td>
+		<td>Show</td>
+    <td>Edit</td>
+    <td>Destroy</td>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+	<td><%= user.id %></td>
+    <td><%= user.name %></td>
+    <td><%= user.email %></td>
+    <td><% if user.admin == true %>Yes<% end %>
+    </td>
+    <td><%= link_to 'Show', user %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td>
+      <% if current_user.email == user.email %>
+      Not permitted!
+      <% else %>
+      <%= link_to 'Destroy', '', method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+</div>
+
+<br/>

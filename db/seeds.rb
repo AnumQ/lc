@@ -6,15 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+User.delete_all
 
-Product.create(name: 'Blue Jeans', 
-			   description: 'Good quality jeans', 
-			   price: '29', 
-			   image: (File.open(File.join(Rails.root, '/app/assets/images/img02.jpg' ) ) ) )
-
-
-
-Product.create(name: 'Brown Hat', 
-			   description: 'Good quality jeans', 
-			   price: '29', 
-			   image: (File.open(File.join(Rails.root, '/app/assets/images/img05.png')) ) )
+User.create(:name => "Anum Qudsia",
+			:email => "anum.qudsia@logbook.com",
+			:password => "google", 
+			:password_confirmation => "google",
+			:admin => true)

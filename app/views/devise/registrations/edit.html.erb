@@ -2,29 +2,10 @@
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
+  
   <div class="field">
-    <%= f.label :FirstName %>
-    <%= f.text_field :firstName %>
-  </div><br />
-  <div class="field">
-    <%= f.label :LastName %>
-    <%= f.text_field :secondName %>
-  </div>  <br />
-  <div class="field">
-    <%= f.label :AddLine1 %>
-    <%= f.text_field :addressLine1 %>
-  </div><br />
-  <div class="field">
-    <%= f.label :AddLine2 %>
-    <%= f.text_field :addressLine2 %>
-  </div><br />
-  <div class="field">
-    <%= f.label :PostCode %>
-    <%= f.text_field :postCode %>
-  </div><br />
-  <div class="field">
-    <%= f.label :City %>
-    <%= f.text_field :city %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
   </div><br />
 
   <div><%= f.label :email %><br />
@@ -43,11 +24,11 @@
   <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
   <%= f.password_field :current_password %></div>
 
-  <div><%= f.submit "Update" %></div>
+  <div><%= f.submit "Update",  :class => "log-button" %></div>
 <% end %>
 
 <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :class => "log-button", :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
 
 <%= link_to "Back", :back %>

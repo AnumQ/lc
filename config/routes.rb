@@ -1,33 +1,29 @@
 Lc::Application.routes.draw do
   
 	
-  resources :orders
-  match '/createorder', :to => 'orders#create', :as => 'create_order'
+  
+	resources :comments
 
-  resources :products
-
+  resources :logs do 
+	resources :comments
+  end
 
   root :to => "pages#home"
   devise_for :users 
-  resources :users
   
   devise_scope :user do
-    get "sign_in", :to => "devise/sessions#new"
-    get "sign_out", :to => "devise/sessions#destroy"
-    get "sign_up", :to => "devise/registrations#new"
-end
+    match '/login', :to => "devise/sessions#new", :as => 'login'
+    match '/logout', :to => "devise/sessions#destroy", :as => 'logout'
+    match '/signup', :to => "devise/registrations#new", :as => 'signup'
+end  
 
   get "pages/home"
   get "pages/about"
-  get "pages/contact"
-  get "pages/help"
   
   match '/home', :to => 'pages#home', :as => 'home'
-  match '/help', :to => 'pages#help', :as => 'help'
-  match '/about', :to => 'pages#about', :as => 'about'
-  match '/contact', :to => 'pages#contact', :as => 'contact' 
   
-  match '/products', :to => 'products#index', :as => 'products'
+    resources :user, :controller => "user"
+	match "/users/", :to => "user#index", :as => "users"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,55 @@
+<div id="logtitle">
+	<div class="title"><%= @log.title %></div>
+	<div class="date"><%= @log.date %></div>
+	
+</div>
+<div id="log">
+<p>
+  <%= @log.body %>
+</p>
+</div>
+
+<div id="border"></div>
+<h2>Comments </h2>
+<% if @comments.size == 0 %>
+<p> No comments yet. </p>
+<%else%>
+<% @comments.each do |comment| %>
+  <div id="comment">
+	<p><b> <% s = User.find_by_id(comment.user_id) %> <%= s.name %> </b> </p>
+	
+   <%= comment.body %>
+   <% if user_signed_in? && current_user.id == comment.user_id %>
+	<br />
+	<br />
+   <%= link_to 'Edit', edit_comment_path(comment) %></td>
+    <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+	<% end %>
+  </div>
+<% end %>
+</table>
+<% end%>
+<% if user_signed_in? %>
+<h2> Post your comment </h2>
+
+<%= form_for([@log, @log.comments.build]) do |f| %>
+  
+  <div class="field">
+    <%= f.text_area :body, :size => "50x5" %>
+  </div>
+  <p><%= f.submit 'Comment', :class => 'log-button' %></p>
+  <% end %>
+<% else %> 
+ 
+ <p> Please, sign in to comment. </p>
+<% end %>
+ 
+
+
+
+<% if user_signed_in? %>
+<% if current_user.admin? %>
+<%= link_to 'Edit', edit_log_path(@log) %> |
+<%= link_to 'Back', logs_path %>
+<% end %>
+<% end %>

@@ -3,31 +3,12 @@
   <%= devise_error_messages! %>
 
  <div class="field">
-    <%= f.label :FirstName %>
-    <%= f.text_field :firstName %>
-  </div><br />
-  <div class="field">
-    <%= f.label :LastName %>
-    <%= f.text_field :secondName %>
-  </div>  <br />
-  <div class="field">
-    <%= f.label :AddLine1 %>
-    <%= f.text_field :addressLine1 %>
-  </div><br />
-  <div class="field">
-    <%= f.label :AddLine2 %>
-    <%= f.text_field :addressLine2 %>
-  </div><br />
-  <div class="field">
-    <%= f.label :PostCode %>
-    <%= f.text_field :postCode %>
-  </div><br />
-  <div class="field">
-    <%= f.label :City %>
-    <%= f.text_field :city %>
-  </div><br />
+    <%= f.label :name %><br />
+    <%= f.text_field :name, :autofocus => true %>
+  </div>
+  
   <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+  <%= f.email_field :email %></div>
 
   <div><%= f.label :password %><br />
   <%= f.password_field :password %></div>
@@ -35,7 +16,7 @@
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
 
-  <div class="bu1"><%= f.submit "Sign up", :class => "orange" %></div>
+  <div class="bu1"><%= f.submit "Sign up", :class => "log-button" %></div>
 
 <% end %>
 <%= render "devise/shared/links" %>
