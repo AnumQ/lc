@@ -27,6 +27,7 @@ class LogsController < ApplicationController
   # GET /logs/new
   # GET /logs/new.json
   def new
+  
     @log = Log.new
 
     respond_to do |format|

@@ -23,7 +23,8 @@ group :assets do
 
   gem 'uglifier', '1.2.3'
 end
-	
+
+gem 'tinymce-rails'
 gem 'jquery-rails', '2.0.2'
 gem 'devise'
 #gem 'paperclip', '~> 3.0'
