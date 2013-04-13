@@ -13,9 +13,11 @@ body
 	font-family: "PT Sans", Arial, Helvetica, sans-serif;
 	font-size: 13px;
 	font-weight: 200;
-	background-color: #737817;
+	background-color: #A1B064;
 
 }
+
+.datemain { font-size: 11px; }
 
 #masthead
 {	
@@ -32,10 +34,11 @@ body
 	width: 670px;	
 	text-align: center;
 	height: 70px;
-	background-color: #D5DC4D;
+	background-color: #DFE4CA;
 }
 #navigation
 {
+	background-color: #F3F5CC;
 	font-size: 14px;
 	text-align: left;
 	float: left;
@@ -48,7 +51,7 @@ body
 	background-color: none;
 	-moz-border-radius: 15px;
     border-radius: 15px;
-	background-color: #F3F5CC;
+	
 }
 #comment { font-size: 13px; padding-left: 20px; padding-right: 20px; margin-bottom: 10px; border-right: 4px solid LightGrey; border-left: 1px solid LightGrey;
 	-moz-border-radius: 15px;
@@ -86,7 +89,7 @@ border-radius: 15px;
 	margin-right: 0px;
 	margin-left: auto;
 	text-align: right;
-	width: 150px;
+	width: 400px;
 }
 
 

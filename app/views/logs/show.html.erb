@@ -1,12 +1,11 @@
 <div id="logtitle">
 	<div class="title"><%= @log.title %></div>
-	<div class="date"><%= @log.date %></div>
+	<div class="date"><%= @log.date.to_formatted_s(:long_ordinal) %></div>
 	
 </div>
 <div id="log">
  <%= @log.body.html_safe %>
 </div>
-
 <div id="border"></div>
 <h2>Comments </h2>
 <% if @comments.size == 0 %>
@@ -16,7 +15,7 @@
   <div id="comment">
 	<p><b> <% s = User.find_by_id(comment.user_id) %> <%= s.name %> </b> </p>
 	
-   <%= comment.body %>
+   <%= comment.body.html_safe %>
    <% if user_signed_in? && current_user.id == comment.user_id %>
 	<br />
 	<br />
@@ -33,13 +32,13 @@
 <%= form_for([@log, @log.comments.build]) do |f| %>
   
   <div class="field">
-    <%= f.text_area :body, :size => "50x5" %>
+    <%= f.text_area :body, :size => "50x5", :class => "tinymce" %>
   </div>
   <p><%= f.submit 'Comment', :class => 'log-button' %></p>
   <% end %>
 <% else %> 
  
- <p> Please, sign in to comment. </p>
+ <p> Please, <a href="/login">sign in</a> to comment. </p>
 <% end %>
  
 

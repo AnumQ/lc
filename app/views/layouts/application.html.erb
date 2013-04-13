@@ -22,7 +22,7 @@
 			<%= link_to "My Account", edit_user_registration_path %>
 			<br />
 			<%= link_to "Sign Out", logout_path, :class => "button", :method => :get %> 
-			<p> Welcome, <%= current_user.name %> </p>
+			<p> Welcome, <%= current_user.name %>! </p>
 			</div>
 			<% else %>
 			<div class="button">
@@ -54,8 +54,9 @@
 		
 	 <h3>Listing logs</h3>
 	 <% @logs = Log.all %>
+	 <% @logs.sort_by { |log| log.date } %>
 	 <% @logs.each do |log| %>
-			<p><%= link_to log.title, log %></p>	
+			<p><%= link_to log.title, log %> - <a class="datemain"><%= log.date.to_formatted_s(:rfc822) %></a></p>	
 	<% end %>	
 	</div>
 

@@ -16,6 +16,7 @@ class LogsController < ApplicationController
   # GET /logs/1.json
   def show
     @log = Log.find(params[:id])
+	@logs = Log.all
 	@comments = @log.comments
 	@users = User.all
     respond_to do |format|
