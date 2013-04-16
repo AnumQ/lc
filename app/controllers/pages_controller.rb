@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
 	@logs = Log.all 
-	@logs_sorted = @logs.sort_by &:date
+	@logs.sort_by { |i| i.log.date }
   end
 end

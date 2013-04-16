@@ -54,7 +54,7 @@
 		
 	 <h3>Listing logs</h3>
 	 
-	 <% @logs_sorted.each do |log| %>
+	 <% @logs.each do |log| %>
 			<p><%= link_to log.title, log %> - <a class="datemain"><%= log.date.to_formatted_s(:rfc822) %></a></p>	
 	<% end %>	
 	</div>
