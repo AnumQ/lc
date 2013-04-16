@@ -7,6 +7,14 @@
  <%= @log.body.html_safe %>
 </div>
 
+
+<% if user_signed_in? %>
+<% if current_user.admin? %>
+<%= link_to 'Edit', edit_log_path(@log) %> |
+<%= link_to 'Back', logs_path %>
+<% end %>
+<% end %>
+
 <div id="border"></div>
 <h2>Comments </h2>
 <% if @comments.size == 0 %>
@@ -43,11 +51,3 @@
 <% end %>
  
 
-
-
-<% if user_signed_in? %>
-<% if current_user.admin? %>
-<%= link_to 'Edit', edit_log_path(@log) %> |
-<%= link_to 'Back', logs_path %>
-<% end %>
-<% end %>
