@@ -53,9 +53,8 @@
 	<%end %>
 		
 	 <h3>Listing logs</h3>
-	 <% @logs = Log.all %>
-	 <% @logs.sort_by { |log| log.date } %>
-	 <% @logs.each do |log| %>
+	 
+	 <% @logs_sorted.each do |log| %>
 			<p><%= link_to log.title, log %> - <a class="datemain"><%= log.date.to_formatted_s(:rfc822) %></a></p>	
 	<% end %>	
 	</div>
