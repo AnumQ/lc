@@ -9,7 +9,7 @@
     <td></td>
   </tr>
 
-<% @logs.each do |log| %>
+<% @logs.sort_by { |i| i.created_at }.each do |log| %>
   <tr>
     <td><%= log.title %></td>
     <td><%= log.date %></td>
