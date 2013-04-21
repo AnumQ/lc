@@ -22,7 +22,7 @@
 <%else%>
 <% @comments.each do |comment| %>
   <div id="comment">
-	<p><b> <% s = User.find_by_id(comment.user_id) %> <%= s.name %> </b> </p>
+	<p><strong> <% s = User.find_by_id(comment.user_id) %> <%= s.name %> </strong> </p>
 	
    <%= comment.body.html_safe %>
    <% if user_signed_in? && current_user.id == comment.user_id %>
